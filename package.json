@@ -10,12 +10,18 @@
         "email": "admin@jamesallardice.com",
         "url": "https://github.com/jamesallardice"
     },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jamesallardice/generator-restangular.git"
+    },
     "main": "app/index.js",
     "scripts": {
         "test": "mocha"
     },
     "dependencies": {
-        "yeoman-generator": "~0.14.0"
+        "yeoman-generator": "~0.14.0",
+        "bower": "~1.2.8",
+        "q": "~1.0.0"
     },
     "devDependencies": {
         "mocha": "~1.14.0"
