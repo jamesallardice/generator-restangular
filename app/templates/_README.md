@@ -26,3 +26,5 @@ $ grunt test:unit    # Run unit tests only
 $ grunt test:e2e     # Run integration tests only
 $ grunt test         # Run all tests
 ```
+
+[grunt]: http://gruntjs.com/
