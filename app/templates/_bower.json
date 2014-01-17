@@ -1,0 +1,32 @@
+{
+    "name": "<%= _.slugify(appName) %>",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+        "angular": "<%= angularVersion %>",
+        "angular-route": "<%= angularVersion %>",
+        "restangular": "<%= restangularVersion %>",
+        "jquery": "<%= jqueryVersion %>"
+    },
+    "devDependencies": {
+        "angular-mocks": "<%= angularVersion %>"
+    },
+    "exportsOverride": {
+        "angular": {
+            "js": "angular.min.js"
+        },
+        "angular-route": {
+            "js": "angular-route.min.js"
+        },
+        "restangular": {
+            "js": "dist/restangular.min.js"
+        },
+        "lodash": {
+            "js": "dist/lodash.min.js"
+        },
+        "jquery": {
+            "js": "jquery.min.js"
+        }
+    }
+}
+

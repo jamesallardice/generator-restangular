@@ -1,0 +1,30 @@
+{
+    "name": "generator-restangular",
+    "version": "0.0.1",
+    "description": "A Yeoman generator for AngularJS apps with RestAngular",
+    "keywords": [
+        "yeoman-generator"
+    ],
+    "author": {
+        "name": "James Allardice",
+        "email": "admin@jamesallardice.com",
+        "url": "https://github.com/jamesallardice"
+    },
+    "main": "app/index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "dependencies": {
+        "yeoman-generator": "~0.14.0"
+    },
+    "devDependencies": {
+        "mocha": "~1.14.0"
+    },
+    "peerDependencies": {
+        "yo": ">=1.0.0"
+    },
+    "engines": {
+        "node": ">=0.8.0",
+        "npm": ">=1.2.10"
+    }
+}
