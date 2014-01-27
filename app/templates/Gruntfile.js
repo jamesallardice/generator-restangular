@@ -22,11 +22,10 @@ module.exports = function (grunt) {
                 "Gruntfile.js"
             ]
         },
-        shell: {
+        express: {
             test: {
-                command: "node test/server",
                 options: {
-                    async: true
+                    script: "test/server.js"
                 }
             }
         },
@@ -107,9 +106,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-express-server");
     grunt.loadNpmTasks("grunt-protractor-runner");
     grunt.loadNpmTasks("grunt-jscs-checker");
-    grunt.loadNpmTasks("grunt-shell-spawn");
     grunt.loadNpmTasks("grunt-bower-task");
     grunt.loadNpmTasks("grunt-karma");
 
@@ -131,10 +130,9 @@ module.exports = function (grunt) {
         "test:e2e:internal"
     ]);
     grunt.registerTask("test:e2e:internal", [
-        "shell:test",
+        "express:test",
         "protractor",
-        "clean:test",
-        "shell:test:kill"
+        "clean:test"
     ]);
 
     grunt.registerTask("test", [
