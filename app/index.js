@@ -125,6 +125,8 @@ RestangularGenerator.prototype.test = function test() {
     this.template("test/_protractor.conf.js", "test/protractor.conf.js");
     this.template("test/_server.js", "test/server.js");
     this.copy("test/karma.conf.js");
+    this.copy("test/unit/jshintrc", "test/unit/.jshintrc");
+    this.copy("test/e2e/jshintrc", "test/e2e/.jshintrc");
 
     // Create some basic tests
     this.copy("test/e2e/index.spec.js", "test/e2e/index.spec.js");
