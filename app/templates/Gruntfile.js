@@ -22,12 +22,6 @@ module.exports = function (grunt) {
                 "Gruntfile.js"
             ]
         },
-        nginx: {
-            options: {
-                prefix: __dirname,
-                config: "nginx.conf"
-            }
-        },
         shell: {
             test: {
                 command: "node test/server",
@@ -118,7 +112,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-shell-spawn");
     grunt.loadNpmTasks("grunt-bower-task");
     grunt.loadNpmTasks("grunt-karma");
-    grunt.loadNpmTasks("grunt-nginx");
 
     grunt.registerTask("default", [
         "jshint",
@@ -139,10 +132,8 @@ module.exports = function (grunt) {
     ]);
     grunt.registerTask("test:e2e:internal", [
         "shell:test",
-        "nginx:start",
         "protractor",
         "clean:test",
-        "nginx:stop",
         "shell:test:kill"
     ]);
 

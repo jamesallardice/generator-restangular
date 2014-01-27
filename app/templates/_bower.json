@@ -9,7 +9,8 @@
         "jquery": "<%= jqueryVersion %>"
     },
     "devDependencies": {
-        "angular-mocks": "<%= angularVersion %>"
+        "angular-mocks": "<%= angularVersion %>",
+        "jasmine-jquery": "1.7.0"
     },
     "exportsOverride": {
         "angular": {

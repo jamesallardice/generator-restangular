@@ -50,11 +50,6 @@ RestangularGenerator.prototype.askFor = function askFor() {
             {
                 name: "testPort",
                 message: "Which port should the test server listen on?",
-                default: "4096"
-            },
-            {
-                name: "testApiPort",
-                message: "Which port should the mock backend server listen on?",
                 default: "7357"
             }
         ],
@@ -109,7 +104,6 @@ RestangularGenerator.prototype.app = function app() {
     // Create essential project files
     this.template("_package.json", "package.json");
     this.template("_bower.json", "bower.json");
-    this.template("_nginx.conf", "nginx.conf");
     this.template("_README.md", "README.md");
     this.copy("Gruntfile.js");
 
