@@ -6,7 +6,10 @@
         "expect": true,
         "browser": true,
         "element": true,
-        "by": true
+        "by": true,
+        "jasmine": true,
+        "getJSONFixture": true,
+        "angular": true
     },
     "browser": true,
     "curly": true,
