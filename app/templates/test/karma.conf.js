@@ -7,11 +7,12 @@ module.exports = function (config) {
         files: [
 
             // Dependencies
-            "build/vendor/jquery/js/jquery.min.js",
-            "build/vendor/lodash/js/lodash.min.js",
-            "build/vendor/angular/js/angular.min.js",
-            "build/vendor/angular-route/js/angular-route.min.js",
-            "build/vendor/restangular/js/restangular.min.js",
+            "build/vendor/jquery/live/jquery.min.js",
+            "build/vendor/jasmine-jquery/jasmine-jquery.js",
+            "build/vendor/lodash/live/lodash.min.js",
+            "build/vendor/angular/live/angular.min.js",
+            "build/vendor/angular-route/live/angular-route.min.js",
+            "build/vendor/restangular/live/restangular.min.js",
             "build/vendor/angular-mocks/angular-mocks.js",
 
             // App code
@@ -48,7 +49,7 @@ module.exports = function (config) {
             ]
         },
         browsers: [
-            "Chrome"
+            "PhantomJS"
         ],
         autoWatch: false,
         singleRun: true

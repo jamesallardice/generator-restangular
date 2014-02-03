@@ -45,15 +45,74 @@ module.exports = function (grunt) {
             build: [ "build" ],
             test: [ "./abrt_checker_*.log" ] // Selenium WebDriver logs
         },
+        "sails-linker": {
+            options: {
+                appRoot: "build/",
+                fileTmpl: "<script src=\"/%s\"></script>"
+            },
+            test: {
+                options: {
+                    startTag: "<!-- TEST SCRIPTS -->",
+                    endTag: "<!-- TEST SCRIPTS END -->"
+                },
+                files: {
+                    "build/index.html": [
+                        "build/vendor/angular-mocks/angular-mocks.js",
+                        "build/vendor/jasmine/lib/jasmine-core/jasmine.js",
+                        "build/vendor/jasmine-jquery/jasmine-jquery.js"
+                    ]
+                }
+            },
+            live: {
+                options: {
+                    startTag: "<!-- APP SCRIPTS -->",
+                    endTag: "<!-- APP SCRIPTS END -->"
+                },
+                files: {
+                    "build/index.html": [
+                        "build/vendor/jquery/live/jquery.min.js",
+                        "build/vendor/lodash/live/lodash.min.js",
+                        "build/vendor/angular/live/angular.min.js",
+                        "build/vendor/angular-route/live/angular-route.min.js",
+                        "build/vendor/restangular/live/restangular.min.js",
+                        "build/assets/js/app.min.js"
+                    ]
+                }
+            },
+            dev: {
+                options: {
+                    startTag: "<!-- APP SCRIPTS -->",
+                    endTag: "<!-- APP SCRIPTS END -->"
+                },
+                files: {
+                    "build/index.html": [
+                        "build/vendor/jquery/dev/jquery.js",
+                        "build/vendor/lodash/dev/lodash.js",
+                        "build/vendor/angular/dev/angular.js",
+                        "build/vendor/angular-route/dev/angular-route.js",
+                        "build/vendor/restangular/dev/restangular.js",
+                        "build/assets/js/app.js"
+                    ]
+                }
+            }
+        },
+        concat: {
+            app: {
+                src: [
+                    "lib/js/app.js",
+                    "lib/js/filters/*.js",
+                    "lib/js/services/*.js",
+                    "lib/js/directives/*.js",
+                    "lib/js/controllers/*.js"
+                ],
+                dest: "build/assets/js/app.js"
+            }
+        },
         uglify: {
             app: {
                 files: {
                     "build/assets/js/app.min.js": [
-                        "lib/js/app.js",
-                        "lib/js/filters/*.js",
-                        "lib/js/services/*.js",
-                        "lib/js/directives/*.js",
-                        "lib/js/controllers/*.js"
+                        "build/assets/js/app.js"
                     ]
                 }
             }
@@ -95,7 +154,7 @@ module.exports = function (grunt) {
                     "lib/**/*.{js,html,css}"
                 ],
                 tasks: [
-                    "build"
+                    "build:dev"
                 ]
             }
         }
@@ -103,11 +162,13 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-express-server");
     grunt.loadNpmTasks("grunt-protractor-runner");
+    grunt.loadNpmTasks("grunt-sails-linker");
     grunt.loadNpmTasks("grunt-jscs-checker");
     grunt.loadNpmTasks("grunt-bower-task");
     grunt.loadNpmTasks("grunt-karma");
@@ -127,6 +188,7 @@ module.exports = function (grunt) {
     ]);
     grunt.registerTask("test:e2e", [
         "build",
+        "sails-linker:test",
         "test:e2e:internal"
     ]);
     grunt.registerTask("test:e2e:internal", [
@@ -143,10 +205,21 @@ module.exports = function (grunt) {
         "test:e2e:internal"
     ]);
 
-    grunt.registerTask("build", [
+    grunt.registerTask("build:internal", [
         "clean:build",
-        "uglify",
+        "concat",
         "copy",
         "bower:install"
+    ]);
+
+    grunt.registerTask("build", [
+        "build:internal",
+        "uglify",
+        "sails-linker:live"
+    ]);
+
+    grunt.registerTask("build:dev", [
+        "build:internal",
+        "sails-linker:dev"
     ]);
 };
