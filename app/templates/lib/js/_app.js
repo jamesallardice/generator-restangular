@@ -1,6 +1,6 @@
 angular
 
-    .module("<%= _.slugify(appName) %>", [
+    .module("<%= _.capitalize(appName) %>App", [
         "ngRoute",
         "restangular"
     ])
