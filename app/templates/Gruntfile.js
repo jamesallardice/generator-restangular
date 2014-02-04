@@ -13,7 +13,8 @@ module.exports = function (grunt) {
                 "bower.json",
                 ".jscs.json",
                 ".jshintrc",
-                "{lib,test}/**/*.js",
+                "{lib,test}/**/.jshintrc",
+                "{lib,test}/**/*.{js,json}",
             ]
         },
         jscs: {
