@@ -2,7 +2,7 @@ describe("Router", function () {
 
     "use strict";
 
-    beforeEach(angular.mock.module("<%= _.capitalize(appName) %>App"));
+    beforeEach(angular.mock.module("<%= moduleName %>"));
 
     it("should map routes to controllers and templates", angular.mock.inject(function ($route) {
 

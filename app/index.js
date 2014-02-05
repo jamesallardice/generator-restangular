@@ -80,6 +80,9 @@ RestangularGenerator.prototype.askFor = function askFor() {
                 this[key] = props[key];
             }.bind(this));
 
+            this.moduleName = this._.capitalize(this.appName) + "App";
+            this.packageName = this._.slugify(this._.humanize(this.appName));
+
             cb();
 
         }.bind(this));

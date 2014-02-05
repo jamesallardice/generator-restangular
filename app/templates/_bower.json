@@ -1,5 +1,5 @@
 {
-    "name": "<%= _.slugify(_.humanize(appName)) %>",
+    "name": "<%= packageName %>",
     "version": "0.0.0",
     "private": true,
     "dependencies": {
