@@ -11,7 +11,7 @@ describe("restangular generator", function () {
                 return done(err);
             }
 
-            this.app = helpers.createGenerator("capita-angular:app", [
+            this.app = helpers.createGenerator("restangular:app", [
                 "../../app"
             ]);
             done();
@@ -25,13 +25,17 @@ describe("restangular generator", function () {
             ".jscs.json",
             ".jshintrc",
             "Gruntfile.js",
+            "README.md",
             "bower.json",
-            "nginx.conf",
             "package.json"
         ];
 
         helpers.mockPrompt(this.app, {
-            "someOption": true
+            appName: "TestApp",
+            testPort: 7357,
+            jqueryVersion: "1.10.2",
+            angularVersion: "1.2.11",
+            restangularVersion: "1.3.1"
         });
         this.app.options["skip-install"] = true;
         this.app.run({}, function () {
