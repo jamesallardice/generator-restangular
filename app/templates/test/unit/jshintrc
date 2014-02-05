@@ -1,12 +1,18 @@
 {
     "globals": {
-        "angular": true,
+        "jasmine": true,
         "describe": true,
-        "beforeEach": true,
-        "it": true,
+        "xdescribe": true,
         "expect": true,
+        "it": true,
+        "xit": true,
+        "beforeEach": true,
+        "afterEach": true,
+        "spyOn": true,
+        "runs": true,
+        "waitsFor": true,
         "getJSONFixture": true,
-        "jasmine": true
+        "angular": true
     },
     "browser": true,
     "curly": true,
