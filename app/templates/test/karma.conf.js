@@ -22,6 +22,9 @@ module.exports = function (config) {
             "lib/js/directives/*.js",
             "lib/js/controllers/*.js",
 
+            // Partials
+            "lib/partials/**/*.html",
+
             // Test code
             "test/unit/**/*.js"
         ],
@@ -35,6 +38,9 @@ module.exports = function (config) {
         preprocessors: {
             "lib/js/**/*.js": [
                 "coverage"
+            ],
+            "lib/partials/**/*.html": [
+                "ng-html2js"
             ]
         },
         coverageReporter: {
@@ -47,6 +53,10 @@ module.exports = function (config) {
                     dir: "coverage/"
                 }
             ]
+        },
+        ngHtml2JsPreprocessor: {
+            stripPrefix: "lib",
+            moduleName: "partials"
         },
         browsers: [
             "PhantomJS"
