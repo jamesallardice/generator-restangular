@@ -15,6 +15,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use("/vendor", express.static(path.join("build", "vendor")));
 app.use("/templates", express.static(path.join("build", "templates")));
+app.use("/partials", express.static(path.join("build", "partials")));
 app.use("/assets", express.static(path.join("build", "assets")));
 app.use(rewrite([
     "!^/base /"
