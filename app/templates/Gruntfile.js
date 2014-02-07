@@ -136,6 +136,12 @@ module.exports = function (grunt) {
                         dest: "build/templates/",
                         expand: true,
                         flatten: true
+                    },
+                    {
+                        src: "lib/partials/*",
+                        dest: "build/partials/",
+                        expand: true,
+                        flatten: true
                     }
                 ]
             }
